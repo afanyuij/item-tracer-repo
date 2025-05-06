@@ -10,6 +10,7 @@
         $row = mysqli_fetch_array($result);
         if($row){
             $_SESSION['Email'] = $email;
+            $_SESSION['UserId'] = $row['UserID'];
             $_SESSION['Fullname'] = $row['Fullname'];
             header("location:home.php");
         }else{

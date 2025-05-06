@@ -128,6 +128,7 @@ $query=mysqli_query($conn, 'select * from document_categories');
     <?php
      include 'dbcon.php';
      if(isset($_POST['submit'])){
+          $UserId=$_SESSION['UserId'];
           $names=$_POST['names'];
           $email_phone=$_POST['email_phone'];
           $category=$_POST['category'];
@@ -149,7 +150,7 @@ $query=mysqli_query($conn, 'select * from document_categories');
         if (empty($category)) {
             die("Category is empty! Please select a valid category.");
         }
-        $sql = "INSERT INTO documents (FinderName,FinderContact,DocumentType,DocumentNumber,DocumentLocation,Descriptions,DocumentStatus,found_img) values('$names','$email_phone','$category','$doc_number','$loc_json','$desc','$doc_status','$image_folder')";
+        $sql = "INSERT INTO documents (UserId,FinderName,FinderContact,DocumentType,DocumentNumber,DocumentLocation,Descriptions,DocumentStatus,found_img) values('$UserId','$names','$email_phone','$category','$doc_number','$loc_json','$desc','$doc_status','$image_folder')";
         $query=mysqli_query($conn,$sql);
         if($query)
         {

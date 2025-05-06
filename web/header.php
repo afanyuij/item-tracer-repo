@@ -42,7 +42,16 @@ if(isset($_SESSION['Email'])){
       <a href="index.php" class="text-gray-700 font-medium hover:text-blue-500 duration-500 hover:scale-110">Home</a>
       <a href="lost-item-page.php" class="text-gray-700 font-medium hover:text-blue-500 duration-500 hover:scale-110">Lost items</a>
       <a href="found-item-page.php" class="text-gray-700 font-medium hover:text-blue-500 duration-500 hover:scale-110">Found items</a>
-      <a href="#" class="text-gray-700 font-medium hover:text-blue-500 duration-500 hover:scale-110">My-items</a>
+      <div class="drop">
+      <a href="#" class="text-gray-700 font-medium hover:text-blue-500  duration-500 hover:scale-110"  onclick="toggleMyitems()">My-items</a>
+      <div id="itemsDropdown" class="absolute right-[19cm] mt-8 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+        
+        <div class="p-2">
+          <a href="my-found-item.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">MyFound-Item</a>
+          <a href="my-lost-item.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">MyLost-Item</a>
+        </div>
+      </div>
+      </div>
     </nav>
     <div class="flex items-center space-x-4 relative">
       <a href="#"><button class="p-2">🔔</button></a>
@@ -93,4 +102,17 @@ if(isset($_SESSION['Email'])){
       dropdown.classList.add('hidden');
     }
   });
+  function toggleMyitems() {
+    const dropdown = document.getElementById('itemsDropdown');
+    dropdown.classList.toggle('hidden');
+  }
+
+  // Close dropdown when clicking outside
+  window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('itemsDropdown');
+    if (!event.target.closest('a') && !event.target.closest('#itemsDropdown')) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
 </script>
