@@ -1,0 +1,10 @@
+.section_one{
+    background-image: url('./image/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+  }
+  .section-content{
+    margin-left: 28cm;
+  }
